@@ -128,8 +128,8 @@ function filterCategory(category) {
     });
 }
 
-// Cart functionality
-let cart = [];
+// Cart Functionality
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function addToCart(item) {
     // Check if item already exists in cart
@@ -146,20 +146,26 @@ function addToCart(item) {
         });
     }
 
+    localStorage.setItem('cart', JSON.stringify(cart));
     updateCartDisplay();
     updateCartCount();
+    showNotification('Item added to cart');
 }
 
 function removeFromCart(index) {
     cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
     updateCartDisplay();
     updateCartCount();
+    showNotification('Item removed from cart');
 }
 
 function updateCartCount() {
     const cartCount = document.querySelector('.cart-count');
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
+    if (cartCount) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+    }
 }
 
 function updateCartDisplay() {
@@ -167,44 +173,46 @@ function updateCartDisplay() {
     const subtotalElement = document.querySelector('.subtotal span:last-child');
     const totalElement = document.querySelector('.total span:last-child');
 
-    // Clear current cart items
-    cartItems.innerHTML = '';
+    if (cartItems) {
+        // Clear current cart items
+        cartItems.innerHTML = '';
 
-    let subtotal = 0;
+        let subtotal = 0;
 
-    // Add each item to cart display
-    cart.forEach((item, index) => {
-        const itemElement = document.createElement('div');
-        itemElement.className = 'cart-item';
+        // Add each item to cart display
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cart-item';
 
-        // Calculate item total
-        const price = parseFloat(item.price.replace('₱', '').replace(',', ''));
-        const itemTotal = price * item.quantity;
-        subtotal += itemTotal;
+            // Calculate item total
+            const price = parseFloat(item.price.replace('₱', '').replace(',', ''));
+            const itemTotal = price * item.quantity;
+            subtotal += itemTotal;
 
-        itemElement.innerHTML = `
-            <img src="https://via.placeholder.com/80x80.png?text=${item.name}" alt="${item.name}" class="cart-item-image">
-            <div class="cart-item-details">
-                <div class="cart-item-title">${item.name}</div>
-                <div class="cart-item-price">${item.price}</div>
-                <div class="cart-item-quantity">
-                    <button class="quantity-btn" onclick="updateCartItemQuantity(${index}, -1)">-</button>
-                    <span>${item.quantity}</span>
-                    <button class="quantity-btn" onclick="updateCartItemQuantity(${index}, 1)">+</button>
+            itemElement.innerHTML = `
+                <img src="https://via.placeholder.com/80x80.png?text=${item.name}" alt="${item.name}" class="cart-item-image">
+                <div class="cart-item-details">
+                    <div class="cart-item-title">${item.name}</div>
+                    <div class="cart-item-price">${item.price}</div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn" onclick="updateCartItemQuantity(${index}, -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn" onclick="updateCartItemQuantity(${index}, 1)">+</button>
+                    </div>
+                    <div class="cart-item-total">₱${itemTotal.toFixed(2)}</div>
                 </div>
-                <div class="cart-item-total">₱${itemTotal.toFixed(2)}</div>
-            </div>
-        `;
+            `;
 
-        cartItems.appendChild(itemElement);
-    });
+            cartItems.appendChild(itemElement);
+        });
 
-    // Update subtotal and total
-    const deliveryFee = 50;
-    const total = subtotal + deliveryFee;
+        // Update subtotal and total
+        const deliveryFee = 50;
+        const total = subtotal + deliveryFee;
 
-    subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
-    totalElement.textContent = `₱${total.toFixed(2)}`;
+        if (subtotalElement) subtotalElement.textContent = `₱${subtotal.toFixed(2)}`;
+        if (totalElement) totalElement.textContent = `₱${total.toFixed(2)}`;
+    }
 }
 
 function updateCartItemQuantity(index, change) {
@@ -213,6 +221,7 @@ function updateCartItemQuantity(index, change) {
 
     if (newQuantity > 0) {
         item.quantity = newQuantity;
+        localStorage.setItem('cart', JSON.stringify(cart));
         updateCartDisplay();
         updateCartCount();
     } else {
@@ -225,13 +234,16 @@ function toggleCart() {
     cartSidebar.classList.toggle('active');
 }
 
-function closeCart() {
-    const cartSidebar = document.querySelector('.cart-sidebar');
-    cartSidebar.classList.remove('active');
-}
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
 
-// Initialize cart icon click handler
-document.querySelector('.cart-icon').addEventListener('click', toggleCart);
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
 
 // Item Overview Modal
 let currentQuantity = 1;
@@ -249,20 +261,7 @@ function showItemOverview(card) {
     const image = card.querySelector('.card-image img').src;
     const title = card.querySelector('.card-title').textContent;
     const description = card.querySelector('.card-description').textContent;
-
-    // Handle both regular and special prices
-    let price;
-    const specialPrice = card.querySelector('.special-price');
-    const regularPrice = card.querySelector('.price');
-
-    if (specialPrice) {
-        price = specialPrice.textContent;
-    } else if (regularPrice) {
-        price = regularPrice.textContent;
-    } else {
-        console.error('No price found for item:', title);
-        return;
-    }
+    const price = card.querySelector('.price').textContent;
 
     // Store current item for cart functionality
     currentItem = {
