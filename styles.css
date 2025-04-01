@@ -208,7 +208,7 @@ body {
 
 /* Featured Categories */
 .featured-categories {
-    display: grid;
+    /*display: grid;*/
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     padding: 4rem 5%;
@@ -1404,7 +1404,7 @@ body {
     flex-direction: column;
 }
 
-/* Horizontal Scroll for Categories */
+/* Category Scroll */
 .category-scroll {
     display: flex;
     overflow-x: auto;
@@ -1413,21 +1413,8 @@ body {
     scrollbar-width: thin;
     scrollbar-color: var(--primary) var(--background);
     -webkit-overflow-scrolling: touch;
-    /* Smooth scrolling on iOS */
-}
-
-.category-scroll::-webkit-scrollbar {
-    height: 6px;
-}
-
-.category-scroll::-webkit-scrollbar-track {
-    background: var(--background);
-    border-radius: 3px;
-}
-
-.category-scroll::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 3px;
+    width: 100%;
+    margin: 0;
 }
 
 .category-scroll .card {
@@ -1439,21 +1426,42 @@ body {
     .category-scroll {
         gap: var(--spacing-sm);
         padding: var(--spacing-sm) 0;
+        width: 100%;
+        margin: 0;
     }
 
     .category-scroll .card {
-        flex: 0 0 250px;
-        min-width: 250px;
+        flex: 0 0 85%;
+        min-width: 85%;
+        margin: 0;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .category-scroll .card-content {
+        padding: var(--spacing-sm);
+    }
+
+    .category-scroll .card-title {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .category-scroll .card-description {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-xs);
     }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 480px) {
     .category-scroll {
         gap: var(--spacing-xs);
     }
 
     .category-scroll .card {
-        flex: 0 0 200px;
+        flex: 0 0 90%;
+        min-width: 90%;
+        margin: 0;
+        padding: 0 var(--spacing-sm);
     }
 }
 
@@ -1677,65 +1685,212 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
+
+    /* General Layout */
+    .container {
+        padding: var(--spacing-sm);
     }
 
-    .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 80%;
-        max-width: 300px;
-        background: var(--secondary-color);
+    section {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: var(--spacing-xl) var(--spacing-sm);
+        min-height: 60vh;
+    }
+
+    .hero-content {
+        padding: var(--spacing-md);
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* Featured Section */
+    .featured-section {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .grid-3 {
+        gap: var(--spacing-sm);
+    }
+
+    .card {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .card-image {
+        height: 160px;
+    }
+
+    .card-content {
+        padding: var(--spacing-sm);
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .card-description {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    /* Category Scroll */
+    .category-scroll {
+        gap: var(--spacing-xs);
+        padding: var(--spacing-xs) 0;
+    }
+
+    .category-scroll .card {
+        flex: 0 0 85%;
+        min-width: 85%;
+    }
+
+    /* About Section */
+    .about-section {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .about-content {
+        padding: var(--spacing-sm);
+    }
+
+    .about-content h2 {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .about-content p {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    /* Specials Section */
+    .specials-section {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .specials-grid {
+        gap: var(--spacing-sm);
+    }
+
+    .special-card {
+        padding: var(--spacing-sm);
+    }
+
+    .special-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .special-card p {
+        font-size: 0.9rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .contact-info {
+        padding: var(--spacing-sm);
+    }
+
+    .contact-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .footer-content {
         flex-direction: column;
-        padding: var(--spacing-xl) var(--spacing-md);
-        transition: var(--transition);
-        z-index: 1000;
-    }
-
-    .nav-links.active {
-        display: flex;
-        right: 0;
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
 
-    .menu-category-section {
-        margin-bottom: var(--spacing-lg);
+    .footer-section {
+        width: 100%;
+        text-align: center;
     }
 
+    .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-section p {
+        font-size: 0.9rem;
+    }
+
+    /* Cart Sidebar */
     .cart-sidebar {
         width: 100%;
+        right: -100%;
     }
 
-    .modal-content {
-        width: 95%;
-        margin: 1rem;
+    .cart-sidebar.active {
+        right: 0;
+    }
+
+    /* Mobile Navigation */
+    .nav-links {
+        top: 60px;
+        padding: var(--spacing-sm);
+    }
+
+    .nav-links a {
+        padding: var(--spacing-xs);
+        font-size: 1rem;
     }
 }
 
-/* Mobile Menu Overlay */
-.nav-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    backdrop-filter: blur(3px);
-}
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
 
-.nav-overlay.active {
-    display: block;
-}
+    .section-title {
+        font-size: 1.3rem;
+    }
 
-body.menu-open {
-    overflow: hidden;
+    .card-image {
+        height: 140px;
+    }
+
+    .category-scroll .card {
+        flex: 0 0 90%;
+        min-width: 90%;
+    }
+
+    .about-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .special-card h3 {
+        font-size: 1.1rem;
+    }
 }
