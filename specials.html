@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Specials | Karinderia Express</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <h1>Karinderia Express</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="specials.html" class="active">Today's Specials</a>
+                <a href="about.html">About Us</a>
+                <div class="cart-icon">
+                    <span class="cart-count">0</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Specials Hero Section -->
+    <section class="specials-hero">
+        <div class="hero-content">
+            <h2>Today's Specials</h2>
+            <p>Limited time offers and exclusive deals</p>
+            <button class="btn btn-primary">View All Specials</button>
+        </div>
+    </section>
+
+    <!-- Specials Content -->
+    <section class="specials-content">
+        <div class="grid-container">
+            <!-- Featured Special -->
+            <div class="menu-category-section" id="featured-special">
+                <h3 class="section-title">Featured Special</h3>
+                <p class="section-description">Our chef's special selection for today</p>
+                <div class="category-scroll">
+                    <div class="grid-2">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Lechon+Kawali"
+                                    alt="Lechon Kawali">
+                                <span class="badge badge-primary">Chef's Pick</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Lechon Kawali</h4>
+                                <p class="card-description">Crispy pork belly served with special sauce and rice</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱250.00</span>
+                                    <span class="special-price">₱200.00</span>
+                                    <span class="discount">20% OFF</span>
+                                </div>
+                                <p class="availability">Available until 8:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Seafood+Platter"
+                                    alt="Seafood Platter">
+                                <span class="badge badge-primary">Chef's Pick</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Seafood Platter</h4>
+                                <p class="card-description">Fresh seafood selection with special sauce</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱1,200.00</span>
+                                    <span class="special-price">₱950.00</span>
+                                    <span class="discount">21% OFF</span>
+                                </div>
+                                <p class="availability">Available until 7:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Specials -->
+            <div class="menu-category-section" id="daily-specials">
+                <h3 class="section-title">Daily Specials</h3>
+                <p class="section-description">Special dishes available for a limited time</p>
+                <div class="category-scroll">
+                    <div class="grid-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Kare-Kare" alt="Kare-Kare">
+                                <span class="badge badge-accent">Limited Time</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Kare-Kare</h4>
+                                <p class="card-description">Rich peanut sauce with oxtail and vegetables</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱180.00</span>
+                                    <span class="special-price">₱150.00</span>
+                                    <span class="discount">17% OFF</span>
+                                </div>
+                                <p class="availability">Available until 7:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Sinigang" alt="Sinigang">
+                                <span class="badge badge-accent">Limited Time</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Sinigang na Baboy</h4>
+                                <p class="card-description">Sour soup with pork and vegetables</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱160.00</span>
+                                    <span class="special-price">₱130.00</span>
+                                    <span class="discount">19% OFF</span>
+                                </div>
+                                <p class="availability">Available until 6:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Bicol+Express"
+                                    alt="Bicol Express">
+                                <span class="badge badge-accent">Limited Time</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Bicol Express</h4>
+                                <p class="card-description">Spicy pork stewed in coconut milk and chili peppers</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱180.00</span>
+                                    <span class="special-price">₱140.00</span>
+                                    <span class="discount">22% OFF</span>
+                                </div>
+                                <p class="availability">Available until 5:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Adobo" alt="Adobo">
+                                <span class="badge badge-accent">Limited Time</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Adobo</h4>
+                                <p class="card-description">Classic Filipino stewed meat</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱150.00</span>
+                                    <span class="special-price">₱120.00</span>
+                                    <span class="discount">20% OFF</span>
+                                </div>
+                                <p class="availability">Available until 4:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Laing" alt="Laing">
+                                <span class="badge badge-accent">Limited Time</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Laing</h4>
+                                <p class="card-description">Taro leaves cooked in coconut milk and chili</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱150.00</span>
+                                    <span class="special-price">₱120.00</span>
+                                    <span class="discount">20% OFF</span>
+                                </div>
+                                <p class="availability">Available until 3:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Pinangat" alt="Pinangat">
+                                <span class="badge badge-accent">Limited Time</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Pinangat</h4>
+                                <p class="card-description">Fish wrapped in taro leaves with coconut milk</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱160.00</span>
+                                    <span class="special-price">₱130.00</span>
+                                    <span class="discount">19% OFF</span>
+                                </div>
+                                <p class="availability">Available until 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekend Specials -->
+            <div class="menu-category-section" id="weekend-specials">
+                <h3 class="section-title">Weekend Specials</h3>
+                <p class="section-description">Special treats for the weekend</p>
+                <div class="category-scroll">
+                    <div class="grid-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Lechon" alt="Lechon">
+                                <span class="badge badge-primary">Weekend Only</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Whole Lechon</h4>
+                                <p class="card-description">Whole roasted pig with special sauce</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱3,500.00</span>
+                                    <span class="special-price">₱2,800.00</span>
+                                    <span class="discount">20% OFF</span>
+                                </div>
+                                <p class="availability">Pre-order only</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Seafood" alt="Seafood">
+                                <span class="badge badge-primary">Weekend Only</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Seafood Platter</h4>
+                                <p class="card-description">Fresh seafood selection with special sauce</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱1,200.00</span>
+                                    <span class="special-price">₱950.00</span>
+                                    <span class="discount">21% OFF</span>
+                                </div>
+                                <p class="availability">Available Saturday & Sunday</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Dessert" alt="Dessert">
+                                <span class="badge badge-primary">Weekend Only</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Dessert Buffet</h4>
+                                <p class="card-description">All-you-can-eat Filipino desserts</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱500.00</span>
+                                    <span class="special-price">₱400.00</span>
+                                    <span class="discount">20% OFF</span>
+                                </div>
+                                <p class="availability">Available Saturday & Sunday</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Family+Set" alt="Family Set">
+                                <span class="badge badge-primary">Weekend Only</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Family Set</h4>
+                                <p class="card-description">Complete meal for 4-6 persons</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱1,500.00</span>
+                                    <span class="special-price">₱1,200.00</span>
+                                    <span class="discount">20% OFF</span>
+                                </div>
+                                <p class="availability">Available Saturday & Sunday</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Drinks" alt="Drinks">
+                                <span class="badge badge-primary">Weekend Only</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Drinks Special</h4>
+                                <p class="card-description">Buy 1 Take 1 on all beverages</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱50.00</span>
+                                    <span class="special-price">₱25.00</span>
+                                    <span class="discount">50% OFF</span>
+                                </div>
+                                <p class="availability">Available Saturday & Sunday</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Snacks" alt="Snacks">
+                                <span class="badge badge-primary">Weekend Only</span>
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Snacks Bundle</h4>
+                                <p class="card-description">Assorted Filipino snacks</p>
+                                <div class="price-container">
+                                    <span class="original-price">₱300.00</span>
+                                    <span class="special-price">₱240.00</span>
+                                    <span class="discount">20% OFF</span>
+                                </div>
+                                <p class="availability">Available Saturday & Sunday</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added -->
+        </div>
+        <div class="cart-summary">
+            <div class="subtotal">
+                <span>Subtotal:</span>
+                <span>₱0.00</span>
+            </div>
+            <div class="delivery-fee">
+                <span>Delivery Fee:</span>
+                <span>₱50.00</span>
+            </div>
+            <div class="total">
+                <span>Total:</span>
+                <span>₱0.00</span>
+            </div>
+        </div>
+        <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <!-- Item Overview Modal -->
+    <div class="item-modal" id="itemModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="" alt="">
+                </div>
+                <div class="modal-details">
+                    <h2 class="modal-title"></h2>
+                    <p class="modal-description"></p>
+                    <div class="modal-price"></div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn minus">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="quantity-value">1</span>
+                        <button class="quantity-btn plus">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary add-to-cart-modal">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher collapsed">
+        <div class="theme-buttons">
+            <button class="theme-btn active" onclick="setTheme('light', event)" title="Light Mode">
+                <i class="fas fa-sun"></i>
+            </button>
+            <button class="theme-btn" onclick="setTheme('dark', event)" title="Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="theme-btn" onclick="setTheme('contrast', event)" title="High Contrast Mode">
+                <i class="fas fa-adjust"></i>
+            </button>
+        </div>
+        <button class="theme-toggle" onclick="toggleThemeSwitcher()">
+            <i class="fas fa-palette"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

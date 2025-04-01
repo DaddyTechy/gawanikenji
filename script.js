@@ -1,0 +1,377 @@
+// Theme Switcher
+function setTheme(theme, event) {
+    // Remove all theme classes
+    document.body.classList.remove('theme-dark', 'theme-contrast');
+
+    // Add selected theme class
+    if (theme !== 'light') {
+        document.body.classList.add(`theme-${theme}`);
+    }
+
+    // Update active button
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // If this was called from a click event, update the clicked button
+    if (event && event.target) {
+        event.target.classList.add('active');
+    } else {
+        // If this was called directly, find and activate the matching button
+        const themeBtn = document.querySelector(`.theme-btn[onclick*="${theme}"]`);
+        if (themeBtn) {
+            themeBtn.classList.add('active');
+        }
+    }
+
+    // Save theme preference
+    localStorage.setItem('theme', theme);
+
+    // Update CSS variables based on theme
+    updateThemeColors(theme);
+}
+
+function updateThemeColors(theme) {
+    const root = document.documentElement;
+
+    switch (theme) {
+        case 'dark':
+            root.style.setProperty('--primary-color', '#FF6B6B');
+            root.style.setProperty('--secondary-color', '#ECF0F1');
+            root.style.setProperty('--accent-color', '#FFD700');
+            root.style.setProperty('--text-color', '#FFFFFF');
+            root.style.setProperty('--background-color', '#1A1A1A');
+            root.style.setProperty('--card-bg', '#2D2D2D');
+            root.style.setProperty('--card-border', '#404040');
+            root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.3)');
+            root.style.setProperty('--hover-shadow', 'rgba(0, 0, 0, 0.4)');
+            break;
+        case 'contrast':
+            root.style.setProperty('--primary-color', '#FF0000');
+            root.style.setProperty('--secondary-color', '#000000');
+            root.style.setProperty('--accent-color', '#FFFF00');
+            root.style.setProperty('--text-color', '#000000');
+            root.style.setProperty('--background-color', '#FFFFFF');
+            root.style.setProperty('--card-bg', '#FFFFFF');
+            root.style.setProperty('--card-border', '#000000');
+            root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.5)');
+            root.style.setProperty('--hover-shadow', 'rgba(0, 0, 0, 0.7)');
+            break;
+        default: // light
+            root.style.setProperty('--primary-color', '#FF4D4D');
+            root.style.setProperty('--secondary-color', '#2C3E50');
+            root.style.setProperty('--accent-color', '#FFD700');
+            root.style.setProperty('--text-color', '#333');
+            root.style.setProperty('--background-color', '#F5F5F5');
+            root.style.setProperty('--card-bg', '#FFFFFF');
+            root.style.setProperty('--card-border', '#e5e5e5');
+            root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.1)');
+            root.style.setProperty('--hover-shadow', 'rgba(0, 0, 0, 0.12)');
+    }
+}
+
+function toggleThemeSwitcher() {
+    const switcher = document.querySelector('.theme-switcher');
+    switcher.classList.toggle('collapsed');
+    switcher.classList.toggle('expanded');
+}
+
+// Navigation and Section Scrolling
+function scrollToSection(sectionId) {
+    debugger; // Debug point 1: Check if function is called
+    console.log('Attempting to scroll to section:', sectionId);
+    const section = document.getElementById(sectionId);
+    console.log('Found section:', section); // Debug point 2: Check if section is found
+
+    if (section) {
+        // First scroll to the section
+        section.scrollIntoView({ behavior: 'smooth' });
+        console.log('Scrolled to section'); // Debug point 3: Check if scroll worked
+
+        // Then filter to show only that section
+        filterCategory(sectionId);
+        console.log('Filtered category'); // Debug point 4: Check if filter worked
+    } else {
+        console.error('Section not found:', sectionId); // Debug point 5: Error if section not found
+    }
+}
+
+// Category Filtering
+function filterCategory(category) {
+    debugger; // Debug point 6: Check if filter function is called
+    console.log('Filtering category:', category);
+    const sections = document.querySelectorAll('.menu-category-section');
+    console.log('Found sections:', sections.length); // Debug point 7: Check number of sections
+
+    sections.forEach(section => {
+        console.log('Checking section:', section.id); // Debug point 8: Check each section
+        if (category === 'all' || section.id === category) {
+            section.style.display = 'block';
+            console.log('Showing section:', section.id); // Debug point 9: Log visible sections
+        } else {
+            section.style.display = 'none';
+            console.log('Hiding section:', section.id); // Debug point 10: Log hidden sections
+        }
+    });
+
+    // Update active filter button
+    const filterButtons = document.querySelectorAll('.category-filter-btn');
+    console.log('Found filter buttons:', filterButtons.length); // Debug point 11: Check filter buttons
+
+    filterButtons.forEach(btn => {
+        console.log('Button category:', btn.dataset.category); // Debug point 12: Check button categories
+        btn.classList.remove('active');
+        if (btn.dataset.category === category) {
+            btn.classList.add('active');
+            console.log('Activated button:', btn.dataset.category); // Debug point 13: Log active button
+        }
+    });
+}
+
+// Cart Functionality
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function addToCart(item) {
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    updateCartItems();
+    showNotification('Item added to cart');
+}
+
+function updateCartCount() {
+    const cartCount = document.querySelector('.cart-count');
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
+}
+
+function updateCartItems() {
+    const cartItems = document.querySelector('.cart-items');
+    if (cartItems) {
+        cartItems.innerHTML = cart.map((item, index) => `
+            <div class="cart-item">
+                <div class="item-details">
+                    <h4>${item.name}</h4>
+                    <p>${item.price}</p>
+                </div>
+                <button onclick="removeFromCart(${index})">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `).join('');
+    }
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    updateCartItems();
+    showNotification('Item removed from cart');
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+function closeCart() {
+    const cartSidebar = document.querySelector('.cart-sidebar');
+    if (cartSidebar) {
+        cartSidebar.classList.remove('active');
+    }
+}
+
+// Item Overview Modal
+let currentQuantity = 1;
+let currentItem = null;
+
+function showItemOverview(card) {
+    const modal = document.getElementById('itemModal');
+    const modalImage = modal.querySelector('.modal-image img');
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalDescription = modal.querySelector('.modal-description');
+    const modalPrice = modal.querySelector('.modal-price');
+    const quantityValue = modal.querySelector('.quantity-value');
+
+    // Get item details from the card
+    const image = card.querySelector('.card-image img').src;
+    const title = card.querySelector('.card-title').textContent;
+    const description = card.querySelector('.card-description').textContent;
+    const price = card.querySelector('.price').textContent;
+
+    // Store current item for cart functionality
+    currentItem = {
+        name: title,
+        price: price,
+        quantity: 1
+    };
+
+    // Update modal content
+    modalImage.src = image;
+    modalImage.alt = title;
+    modalTitle.textContent = title;
+    modalDescription.textContent = description;
+    modalPrice.textContent = price;
+    quantityValue.textContent = '1';
+    currentQuantity = 1;
+
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeItemOverview() {
+    const modal = document.getElementById('itemModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    currentItem = null;
+}
+
+function updateQuantity(change) {
+    const quantityValue = document.querySelector('.quantity-value');
+    currentQuantity = Math.max(1, currentQuantity + change);
+    quantityValue.textContent = currentQuantity;
+
+    if (currentItem) {
+        currentItem.quantity = currentQuantity;
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    debugger; // Debug point 14: Check if initialization runs
+    console.log('DOM Content Loaded');
+
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+
+    // Initialize category filters
+    const filterButtons = document.querySelectorAll('.category-filter-btn');
+    console.log('Found filter buttons on init:', filterButtons.length); // Debug point 15: Check initial buttons
+
+    filterButtons.forEach(btn => {
+        console.log('Setting up button:', btn.dataset.category); // Debug point 16: Log button setup
+        btn.addEventListener('click', () => {
+            console.log('Button clicked:', btn.dataset.category); // Debug point 17: Log button clicks
+            filterCategory(btn.dataset.category);
+        });
+    });
+
+    // Initialize cart
+    updateCartCount();
+    updateCartItems();
+
+    // Add click handlers for "Add to Cart" buttons
+    document.querySelectorAll('.btn-primary').forEach(button => {
+        console.log('Found button:', button.textContent.trim()); // Debug point 18: Log found buttons
+        if (button.textContent.trim() === 'Add to Cart') {
+            button.addEventListener('click', function () {
+                console.log('Add to Cart clicked'); // Debug point 19: Log cart clicks
+                const card = this.closest('.card');
+                const name = card.querySelector('.card-title').textContent;
+                const price = card.querySelector('.price').textContent;
+                addToCart({ name, price });
+            });
+        }
+    });
+
+    // Add click handlers for "View Menu" buttons
+    document.querySelectorAll('.btn-primary').forEach(button => {
+        if (button.textContent.trim() === 'View Menu') {
+            console.log('Found View Menu button'); // Debug point 20: Log view menu buttons
+            button.addEventListener('click', function () {
+                console.log('View Menu clicked'); // Debug point 21: Log view menu clicks
+                // Try to get section ID from onclick attribute
+                const onclickAttr = this.getAttribute('onclick');
+                console.log('onclick attribute:', onclickAttr); // Debug point 22: Log onclick attribute
+
+                if (onclickAttr) {
+                    const match = onclickAttr.match(/'([^']+)'/);
+                    console.log('Match result:', match); // Debug point 23: Log match result
+                    if (match) {
+                        const sectionId = match[1];
+                        console.log('Section ID:', sectionId); // Debug point 24: Log section ID
+                        scrollToSection(sectionId);
+                    }
+                } else {
+                    // Try to get section ID from parent card
+                    const card = this.closest('.card');
+                    if (card) {
+                        const sectionId = card.querySelector('.card-title').textContent.toLowerCase().replace(/\s+/g, '-');
+                        console.log('Derived section ID:', sectionId); // Debug point 25: Log derived section ID
+                        scrollToSection(sectionId);
+                    }
+                }
+            });
+        }
+    });
+
+    // Add click handler for cart icon
+    const cartIcon = document.querySelector('.cart-icon');
+    if (cartIcon) {
+        cartIcon.addEventListener('click', function () {
+            console.log('Cart icon clicked'); // Debug point 26: Log cart icon clicks
+            const cartSidebar = document.querySelector('.cart-sidebar');
+            if (cartSidebar) {
+                cartSidebar.classList.toggle('active');
+            }
+        });
+    }
+
+    // Add click handler for checkout button
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', function () {
+            console.log('Checkout clicked'); // Debug point 27: Log checkout clicks
+            if (cart.length === 0) {
+                showNotification('Your cart is empty');
+                return;
+            }
+            showNotification('Proceeding to checkout...');
+        });
+    }
+
+    // Add double-click handler for item cards
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('dblclick', () => {
+            showItemOverview(card);
+        });
+    });
+
+    // Add click handlers for modal controls
+    const modal = document.getElementById('itemModal');
+    if (modal) {
+        // Close button
+        modal.querySelector('.modal-close').addEventListener('click', closeItemOverview);
+
+        // Overlay click
+        modal.querySelector('.modal-overlay').addEventListener('click', closeItemOverview);
+
+        // Quantity controls
+        modal.querySelector('.quantity-btn.minus').addEventListener('click', () => updateQuantity(-1));
+        modal.querySelector('.quantity-btn.plus').addEventListener('click', () => updateQuantity(1));
+
+        // Add to cart button
+        modal.querySelector('.add-to-cart-modal').addEventListener('click', () => {
+            if (currentItem) {
+                // Add item to cart with quantity
+                for (let i = 0; i < currentItem.quantity; i++) {
+                    addToCart({
+                        name: currentItem.name,
+                        price: currentItem.price
+                    });
+                }
+                closeItemOverview();
+            }
+        });
+    }
+});
