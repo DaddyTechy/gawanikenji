@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Karinderia Express</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <h1>Karinderia Express</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="menu.html" class="active">Menu</a>
+                <a href="specials.html">Today's Specials</a>
+                <a href="about.html">About Us</a>
+                <div class="cart-icon">
+                    <span class="cart-count">0</span>
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Menu Hero Section -->
+    <section class="menu-hero">
+        <div class="hero-content">
+            <h2>Our Complete Menu</h2>
+            <p>Discover our wide selection of authentic Filipino dishes</p>
+            <button class="btn btn-primary">View Categories</button>
+        </div>
+    </section>
+
+    <!-- Menu Categories -->
+    <section class="menu-categories">
+        <div class="grid-container">
+            <div class="category-filters">
+                <button class="btn btn-outline category-filter-btn active" data-category="all">All Items</button>
+                <button class="btn btn-outline category-filter-btn" data-category="silog-meals">Silog Meals</button>
+                <button class="btn btn-outline category-filter-btn" data-category="bicolano-favorites">Bicolano
+                    Favorites</button>
+                <button class="btn btn-outline category-filter-btn" data-category="ulam">Ulam</button>
+                <button class="btn btn-outline category-filter-btn" data-category="merienda">Merienda</button>
+                <button class="btn btn-outline category-filter-btn" data-category="drinks">Drinks</button>
+            </div>
+
+            <!-- Silog Meals Section -->
+            <div class="menu-category-section" id="silog-meals">
+                <h3 class="section-title">Silog Meals</h3>
+                <p class="section-description">Filipino breakfast favorites</p>
+                <div class="category-scroll">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x200.png?text=Tapsilog" alt="Tapsilog">
+                            <span class="badge badge-primary">Best Seller</span>
+                            <div class="item-overlay">
+                                <button class="btn btn-primary"
+                                    onclick="addToCart({name: 'Tapsilog', price: '₱120.00'})">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Tapsilog</h4>
+                            <p class="card-description">Beef tapa with garlic rice and egg</p>
+                            <div class="price-container">
+                                <span class="price">₱120.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x200.png?text=Tosilog" alt="Tosilog">
+                            <div class="item-overlay">
+                                <button class="btn btn-primary"
+                                    onclick="addToCart({name: 'Tosilog', price: '₱100.00'})">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Tosilog</h4>
+                            <p class="card-description">Sweet cured pork with garlic rice and egg</p>
+                            <div class="price-container">
+                                <span class="price">₱100.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x200.png?text=Longsilog" alt="Longsilog">
+                            <div class="item-overlay">
+                                <button class="btn btn-primary"
+                                    onclick="addToCart({name: 'Longsilog', price: '₱90.00'})">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Longsilog</h4>
+                            <p class="card-description">Filipino sausage with garlic rice and egg</p>
+                            <div class="price-container">
+                                <span class="price">₱90.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="https://via.placeholder.com/300x200.png?text=Bangsilog" alt="Bangsilog">
+                            <div class="item-overlay">
+                                <button class="btn btn-primary"
+                                    onclick="addToCart({name: 'Bangsilog', price: '₱110.00'})">Add to Cart</button>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Bangsilog</h4>
+                            <p class="card-description">Fried milkfish with garlic rice and egg</p>
+                            <div class="price-container">
+                                <span class="price">₱110.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bicolano Favorites -->
+            <div class="menu-category-section" id="bicolano-favorites">
+                <h3 class="section-title">Bicolano Favorites</h3>
+                <p class="section-description">Spicy and creamy dishes from Bicol</p>
+                <div class="category-scroll">
+                    <div class="grid-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Bicol+Express"
+                                    alt="Bicol Express">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Bicol Express</h4>
+                                <p class="card-description">Spicy pork stewed in coconut milk and chili peppers</p>
+                                <div class="price-container">
+                                    <span class="price">₱180.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Laing" alt="Laing">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Laing</h4>
+                                <p class="card-description">Taro leaves cooked in coconut milk and chili</p>
+                                <div class="price-container">
+                                    <span class="price">₱150.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Pinangat" alt="Pinangat">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Pinangat</h4>
+                                <p class="card-description">Fish wrapped in taro leaves with coconut milk</p>
+                                <div class="price-container">
+                                    <span class="price">₱160.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Kinunot" alt="Kinunot">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Kinunot</h4>
+                                <p class="card-description">Shark meat cooked in coconut milk and malunggay</p>
+                                <div class="price-container">
+                                    <span class="price">₱200.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ulam -->
+            <div class="menu-category-section" id="ulam">
+                <h3 class="section-title">Ulam</h3>
+                <p class="section-description">Main dishes and viands</p>
+                <div class="category-scroll">
+                    <div class="grid-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Adobo" alt="Adobo">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Adobo</h4>
+                                <p class="card-description">Classic Filipino stewed meat</p>
+                                <div class="price-container">
+                                    <span class="price">₱150.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Sinigang" alt="Sinigang">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Sinigang</h4>
+                                <p class="card-description">Sour soup with pork and vegetables</p>
+                                <div class="price-container">
+                                    <span class="price">₱160.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Kare-Kare" alt="Kare-Kare">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Kare-Kare</h4>
+                                <p class="card-description">Rich peanut sauce with oxtail and vegetables</p>
+                                <div class="price-container">
+                                    <span class="price">₱180.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Lechon+Kawali"
+                                    alt="Lechon Kawali">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Lechon Kawali</h4>
+                                <p class="card-description">Crispy pork belly with special sauce</p>
+                                <div class="price-container">
+                                    <span class="price">₱250.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Merienda -->
+            <div class="menu-category-section" id="merienda">
+                <h3 class="section-title">Merienda</h3>
+                <p class="section-description">Snacks and light meals</p>
+                <div class="category-scroll">
+                    <div class="grid-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Pancit" alt="Pancit">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Pancit Canton</h4>
+                                <p class="card-description">Stir-fried noodles with vegetables and meat</p>
+                                <div class="price-container">
+                                    <span class="price">₱120.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Lumpia" alt="Lumpia">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Lumpia</h4>
+                                <p class="card-description">Spring rolls with meat and vegetables</p>
+                                <div class="price-container">
+                                    <span class="price">₱80.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Turon" alt="Turon">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Turon</h4>
+                                <p class="card-description">Banana and jackfruit wrapped in spring roll wrapper</p>
+                                <div class="price-container">
+                                    <span class="price">₱60.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Putu" alt="Putu">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Putu</h4>
+                                <p class="card-description">Steamed rice cake with brown sugar</p>
+                                <div class="price-container">
+                                    <span class="price">₱40.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drinks -->
+            <div class="menu-category-section" id="drinks">
+                <h3 class="section-title">Drinks</h3>
+                <p class="section-description">Refreshing beverages</p>
+                <div class="category-scroll">
+                    <div class="grid-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Buko+Juice" alt="Buko Juice">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Buko Juice</h4>
+                                <p class="card-description">Fresh coconut water with meat</p>
+                                <div class="price-container">
+                                    <span class="price">₱50.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Guyabano+Shake"
+                                    alt="Guyabano Shake">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Guyabano Shake</h4>
+                                <p class="card-description">Soursop fruit smoothie</p>
+                                <div class="price-container">
+                                    <span class="price">₱80.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Mango+Shake" alt="Mango Shake">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Mango Shake</h4>
+                                <p class="card-description">Sweet mango smoothie</p>
+                                <div class="price-container">
+                                    <span class="price">₱80.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/300x200.png?text=Hot+Coffee" alt="Hot Coffee">
+                                <div class="item-overlay">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="card-title">Hot Coffee</h4>
+                                <p class="card-description">Freshly brewed coffee</p>
+                                <div class="price-container">
+                                    <span class="price">₱40.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Order</h3>
+            <button class="close-cart" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added -->
+        </div>
+        <div class="cart-summary">
+            <div class="subtotal">
+                <span>Subtotal:</span>
+                <span>₱0.00</span>
+            </div>
+            <div class="delivery-fee">
+                <span>Delivery Fee:</span>
+                <span>₱50.00</span>
+            </div>
+            <div class="total">
+                <span>Total:</span>
+                <span>₱0.00</span>
+            </div>
+        </div>
+        <button class="btn btn-primary checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <!-- Item Overview Modal -->
+    <div class="item-modal" id="itemModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="" alt="">
+                </div>
+                <div class="modal-details">
+                    <h2 class="modal-title"></h2>
+                    <p class="modal-description"></p>
+                    <div class="modal-price"></div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn minus">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <span class="quantity-value">1</span>
+                        <button class="quantity-btn plus">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary add-to-cart-modal">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher collapsed">
+        <div class="theme-buttons">
+            <button class="theme-btn active" onclick="setTheme('light', event)" title="Light Mode">
+                <i class="fas fa-sun"></i>
+            </button>
+            <button class="theme-btn" onclick="setTheme('dark', event)" title="Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="theme-btn" onclick="setTheme('contrast', event)" title="High Contrast Mode">
+                <i class="fas fa-adjust"></i>
+            </button>
+        </div>
+        <button class="theme-toggle" onclick="toggleThemeSwitcher()">
+            <i class="fas fa-palette"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
